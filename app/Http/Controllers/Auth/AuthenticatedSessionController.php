@@ -39,7 +39,8 @@ class AuthenticatedSessionController extends Controller
             $url = '/dashboard/employee';
         }
 
-        return redirect()->intended($url);
+        return redirect()->intended(RouteServiceProvider::HOME);
+        //return redirect()->intended($url);
     }
 
     /**
