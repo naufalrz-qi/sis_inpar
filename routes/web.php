@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\DestinationsController;
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,9 +20,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::controller(AdminController::class)->group(function () {
+        Route::get('/admin/dashboard', 'dashboard')->name('admin.dashboard');
+    });
+});
+
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::controller(DestinationsController::class)->group(function () {
+        Route::get('/view/destinations', 'view')->name('view.destinations');
+        Route::get('/add/destination', 'add')->name('add.destination');
+        Route::post('/store/destination', 'store')->name('store.destination');
+        Route::put('/update/destination/{id}', 'update')->name('update.destination');
+        Route::get('/edit/destination/{id}', 'edit')->name('edit.destination');
+        Route::get('/delete/destination/{id}', 'delete')->name('delete.destination');
+
+    });
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

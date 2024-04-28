@@ -17,6 +17,7 @@
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <style>
+
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;
@@ -94,10 +95,12 @@
             display: block !important;
         }
     </style>
-    <link rel="stylesheet" href="{{ asset('assets/css/fixed-navbar.css') }}">
-    <link href="{{ asset('assets/css/heroes.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/features.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/css/jumbotrons.css') }}" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ asset('assets/css/fixed-navbar.css') }}">
+<link href="{{ asset('assets/css/heroes.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/features.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/jumbotrons.css') }}" rel="stylesheet">
+<link href="{{ asset('assets/css/dashboard.css') }}" rel="stylesheet">
 
 
 </head>
@@ -171,12 +174,27 @@
         </ul>
     </div>
 
-    @extends('template.navbar')
+    @extends('admin.template.navbar')
 
     @yield('content')
 
-    @extends('template.footer')
+    @extends('admin.template.footer')
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#image').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });
+    </script>
     <script src='{{ asset('assets/js/bootstrap.bundle.min.js') }}'></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.3.2/dist/chart.umd.js" integrity="sha384-eI7PSr3L1XLISH8JdDII5YN/njoSsxfbrkCTnJrzXt+ENP5MOVBxD+l6sEG4zoLp" crossorigin="anonymous"></script><script src="dashboard.js"></script>
 </body>
 
 </html>
