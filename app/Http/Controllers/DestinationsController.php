@@ -14,6 +14,12 @@ class DestinationsController extends Controller
         return view('admin.backend.destinations.view', compact('datas'));
     }
 
+    public function viewMore()
+    {
+        $datas = Destinations::get();
+        return view('destinations', compact('datas'));
+    }
+
     public function add()
     {
         return view('admin.backend.destinations.add');
@@ -25,6 +31,7 @@ class DestinationsController extends Controller
             'name' => 'required',
             'description' => 'required',
             'location' => 'required',
+            'price' => 'required',
         ]);
 
         $image = '';
@@ -42,6 +49,7 @@ class DestinationsController extends Controller
             'description' => $request->description,
             'location' => $request->location,
             'image' => $image,
+            'price' => $request->price,
         ]);
 
         $notification = array(
@@ -88,6 +96,7 @@ class DestinationsController extends Controller
          $data->description = $request->description;
          $data->location = $request->location;
          $data->image = $image;
+         $data->price = $request->price;
 
          $data->save();
 

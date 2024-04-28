@@ -9,6 +9,7 @@
             <th scope="col">Name</th>
             <th scope="col">Description</th>
             <th scope="col">Location</th>
+            <th scope="col">Price(Rp)</th>
             <th scope="col">Image</th>
             <th scope="col">Action</th>
           </tr>
@@ -20,6 +21,7 @@
                 <td>{{ $data->name }}</td>
                 <td>{{ $data->description }}</td>
                 <td>{{ $data->location }}</td>
+                <td>{{ $data->price }}</td>
                 <td><img class="img-xs"
                     src="{{ !empty($data->image) ? url('upload/destinations/' . $data->image) : url('upload/no_image.jpg') }}"
                     alt="" width="150px"></td>

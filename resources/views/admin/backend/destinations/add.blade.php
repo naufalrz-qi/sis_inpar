@@ -22,6 +22,10 @@
                 <input type="file" class="form-control" id="image" autocomplete="off" name="image" />
             </div>
             <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" class="form-control" id="price" autocomplete="off" name="price" />
+            </div>
+            <div class="mb-3">
                 <label for="image" class="form-label"></label>
                 <img id="showImage" class="wd-200 rounded mb-4"
                     src="{{ url('upload/no_image.jpg') }}"

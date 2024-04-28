@@ -17,6 +17,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('location');
             $table->string('image')->nullable();
+            $table->bigInteger('price');
             $table->timestamps();
         });
     }
